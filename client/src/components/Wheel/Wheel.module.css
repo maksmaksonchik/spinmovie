@@ -1,0 +1,108 @@
+.wheel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  filter: drop-shadow(0px 16px 32px rgba(45, 42, 77, 0.25));
+}
+
+.disc {
+  box-sizing: content-box;
+  height: var(--wheel-inner-size);
+  width: var(--wheel-inner-size);
+  background: #555;
+  border-radius: 50%;
+  border: 8px solid var(--color-neutral);
+  position: relative;
+  overflow: hidden;
+  transition: 5s;
+}
+
+.disc div {
+  height: var(--pie-height);
+  width: var(--pie-width);
+  position: absolute;
+  clip-path: polygon(100% 0, 50% 100%, 0 0);
+  transform: translateX(-50%);
+  transform-origin: bottom;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: #fff;
+  left: calc(50% - (var(--pie-width) / 2));
+  background: url(../../img/poster.jpg) top/cover;
+}
+
+.disc .item0 {
+  transform: rotate(0);
+}
+
+.disc .item1 {
+  transform: rotate(36deg);
+}
+
+.disc .item2 {
+  transform: rotate(36deg);
+}
+
+.disc .item2 {
+  transform: rotate(72deg);
+}
+
+.disc .item3 {
+  transform: rotate(108deg);
+}
+
+.disc .item4 {
+  transform: rotate(144deg);
+}
+
+.disc .item5 {
+  transform: rotate(180deg);
+}
+
+.disc .item6 {
+  transform: rotate(216deg);
+}
+
+.disc .item7 {
+  transform: rotate(252deg);
+}
+
+.disc .item8 {
+  transform: rotate(288deg);
+}
+
+.disc .item9 {
+  transform: rotate(324deg);
+}
+
+.spin {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 100;
+  left: calc(var(--wheel-inner-size) / 2 - 70px + 8px);
+  text-transform: uppercase;
+  background-color: var(--color-primary-light);
+  border: 6px solid var(--color-neutral);
+  color: var(--color-neutral);
+  font-size: 40px;
+  font-weight: 500;
+  box-shadow: 0px 8px 8px var(--color-shadow-primary-dark);
+  transition: all 0.15s linear;
+}
+
+.spin:hover {
+  cursor: pointer;
+  filter: brightness(1.1);
+}
+
+.arrow {
+  position: absolute;
+  z-index: 100;
+  left: calc(var(--wheel-inner-size) / 2 - 38.5px + 8px);
+  bottom: 91%
+}
