@@ -1,0 +1,17 @@
+.options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 16px;
+  flex-grow: 1;
+  background: var(--color-secondary-light);
+  border-radius: 8px;
+  border-top-left-radius: 0;
+}
+
+.submit {
+  width: 100%;
+  background: var(--color-primary-light);
+}

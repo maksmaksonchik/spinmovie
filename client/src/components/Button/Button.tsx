@@ -4,11 +4,15 @@ import styles from './Button.module.css';
 
 type Props = {
   onClick: () => void;
+  className?: string;
 }
 
-const Button: FC<PropsWithChildren<Props>> = ({ onClick, children }) => {
+const Button: FC<PropsWithChildren<Props>> = ({ onClick, className, children }) => {
   return (
-    <button className={styles.button} onClick={onClick}>
+    <button
+      className={className ? (`${className} ${styles.button}`) : styles.button}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
