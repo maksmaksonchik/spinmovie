@@ -1,10 +1,23 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import styles from './Wheel.module.css'
 import arrow from '../../img/arrow.svg'
 import { getRandomSpin } from './utils/getRandomSpin';
+import { getMovieList } from '../../services/requestMock';
+import { TMovie } from '../../types';
 
 const Wheel: FC = () => {
+
+  const [movieList, setMovieList] = useState([] as TMovie[]);
+
+  const fetchMovieList = async () => {
+    const movieList = await getMovieList();
+
+    setMovieList(movieList);
+  }
+
+  useEffect(() => { fetchMovieList() }, []);
+
   let currantRotation = 0;
 
   // начальное положение стрелки: 18 градусов (от начала нулевого айтема)
@@ -24,8 +37,8 @@ const Wheel: FC = () => {
     currantRotation = currantRotation + randomSpin;
 
     const spinResult = Math.floor((currantRotation + INITIAL_ARROW_POSITION) % 360 / 36);
-    
-    setTimeout(() => console.log(spinResult), 5000);
+
+    setTimeout(() => console.log(movieList[spinResult].name), 5000);
   }
 
   return (
@@ -33,7 +46,18 @@ const Wheel: FC = () => {
       <button className={styles.spin} onClick={spinWheel}>Spin!</button>
       <img className={styles.arrow} src={arrow} alt="arrow" />
       <div className={styles.disc}>
-        <div className={styles.item0}>0</div>
+        {movieList.map((movie, i) => (
+          <div
+            className={styles[`item${i}`]}
+            key={i}
+          >
+            <div
+              className={styles.poster}
+              style={{ background: `url(${movie.poster}) top/cover` }}
+            />
+          </div>
+        ))}
+        {/* <div className={styles.item0}>0</div>
         <div className={styles.item1}>1</div>
         <div className={styles.item2}>2</div>
         <div className={styles.item3}>3</div>
@@ -42,7 +66,7 @@ const Wheel: FC = () => {
         <div className={styles.item6}>6</div>
         <div className={styles.item7}>7</div>
         <div className={styles.item8}>8</div>
-        <div className={styles.item9}>9</div>
+        <div className={styles.item9}>9</div> */}
       </div>
     </div>
   );

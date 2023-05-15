@@ -3,16 +3,16 @@
   position: relative;
   display: flex;
   align-items: center;
-  filter: drop-shadow(0px 16px 32px rgba(45, 42, 77, 0.25));
+  filter: drop-shadow(0px 16px 32px var(--color-primary-dark));
 }
 
 .disc {
   box-sizing: content-box;
   height: var(--wheel-inner-size);
   width: var(--wheel-inner-size);
-  background: #555;
+  background: var(--color-secondary-light);
   border-radius: 50%;
-  border: 8px solid var(--color-neutral);
+  border: 8px solid var(--color-secondary-light);
   position: relative;
   overflow: hidden;
   transition: 5s;
@@ -23,16 +23,12 @@
   width: var(--pie-width);
   position: absolute;
   clip-path: polygon(100% 0, 50% 100%, 0 0);
-  transform: translateX(-50%);
   transform-origin: bottom;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  color: #fff;
   left: calc(50% - (var(--pie-width) / 2));
-  background: url(../../img/poster.jpg) top/cover;
+}
+
+.disc .poster {
+  bottom: 10px;
 }
 
 .disc .item0 {
@@ -88,7 +84,7 @@
   left: calc(var(--wheel-inner-size) / 2 - 70px + 8px);
   text-transform: uppercase;
   background-color: var(--color-primary-light);
-  border: 6px solid var(--color-neutral);
+  border: 6px solid var(--color-secondary-light);
   color: var(--color-neutral);
   font-size: 40px;
   font-weight: 500;
