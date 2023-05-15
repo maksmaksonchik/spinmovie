@@ -1,5 +1,4 @@
 .wheel {
-  padding: 15px 0 0 0;
   position: relative;
   display: flex;
   align-items: center;
@@ -101,5 +100,5 @@
   position: absolute;
   z-index: 100;
   left: calc(var(--wheel-inner-size) / 2 - 38.5px + 8px);
-  top: 0;
+  bottom: 91%;
 }

@@ -31,15 +31,14 @@ const Wheel: FC = () => {
       return;
     };
 
-    const randomSpin = getRandomSpin();
+    currantRotation = currantRotation + getRandomSpin();
+    
+    disc.style.transform = `rotate(${currantRotation}deg)`;
 
-    disc.style.transform = `rotate(${-(currantRotation + randomSpin)}deg)`;
-    currantRotation = currantRotation + randomSpin;
-
-    const spinResult = Math.floor((currantRotation + INITIAL_ARROW_POSITION) % 360 / 36);
+    const spinResult = 10 - Math.ceil((currantRotation - INITIAL_ARROW_POSITION) % 360 / 36);
 
     setTimeout(() => console.log(movieList[spinResult].name), 5000);
-  }
+  };
 
   return (
     <div className={styles.wheel}>
@@ -57,19 +56,9 @@ const Wheel: FC = () => {
             />
           </div>
         ))}
-        {/* <div className={styles.item0}>0</div>
-        <div className={styles.item1}>1</div>
-        <div className={styles.item2}>2</div>
-        <div className={styles.item3}>3</div>
-        <div className={styles.item4}>4</div>
-        <div className={styles.item5}>5</div>
-        <div className={styles.item6}>6</div>
-        <div className={styles.item7}>7</div>
-        <div className={styles.item8}>8</div>
-        <div className={styles.item9}>9</div> */}
       </div>
     </div>
   );
-}
+};
 
 export default Wheel;
