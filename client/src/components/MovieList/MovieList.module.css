@@ -1,0 +1,22 @@
+.movieList {
+  overflow-y: scroll;
+  flex-shrink: 10;
+  padding-right: 10px;
+}
+
+.movieList > div {
+  margin-bottom: 8px;
+}
+
+.movieList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.movieList::-webkit-scrollbar-track {
+  background: none;
+}
+
+.movieList::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary-light);
+  border-radius: 3px;
+}
