@@ -1,20 +1,13 @@
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 
 import styles from './MovieList.module.css'
-import { getMovieList } from '../../services/requestMock';
-import { TMovie } from '../../types';
+
 import MovieListItem from '../MovieListItem/MovieListItem';
+import { useAppSelector } from '../../hooks/redux';
 
 const MovieList: FC = () => {
-  const [movieList, setMovieList] = useState([] as TMovie[]);
 
-  const fetchMovieList = async () => {
-    const movieList = await getMovieList();
-
-    setMovieList(movieList);
-  }
-
-  useEffect(() => { fetchMovieList() }, []);
+  const {movieList} = useAppSelector(state => state.movieListReducer)
 
   return (
     <div className={styles.movieList}>

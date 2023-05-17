@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { TMovie } from '../../types';
+import { TMovie } from '../../models/TMovie';
 import styles from './MovieListItem.module.css';
 
 type Props = {

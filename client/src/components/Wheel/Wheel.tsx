@@ -1,22 +1,13 @@
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 
 import styles from './Wheel.module.css'
 import arrow from '../../img/arrow.svg'
 import { getRandomSpin } from './utils/getRandomSpin';
-import { getMovieList } from '../../services/requestMock';
-import { TMovie } from '../../types';
+import { useAppSelector } from '../../hooks/redux';
 
 const Wheel: FC = () => {
 
-  const [movieList, setMovieList] = useState([] as TMovie[]);
-
-  const fetchMovieList = async () => {
-    const movieList = await getMovieList();
-
-    setMovieList(movieList);
-  }
-
-  useEffect(() => { fetchMovieList() }, []);
+  const {movieList} = useAppSelector(state => state.movieListReducer)
 
   let currantRotation = 0;
 
