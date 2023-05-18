@@ -12,12 +12,16 @@ export const fetchMovieList = () => async (dispatch: AppDispatch) => {
 
     const movie = response.data.docs.map((movie):TMovie => {
       return {
+        id: movie.id,
         poster: movie.poster.url,
         name: movie.name,
         alternativeName: movie.alternativeName ?? undefined,
         year: movie.year,
         genres: movie.genres.map((genreObj):string => genreObj.name),
         countries: movie.countries.map((genreObj):string => genreObj.name),
+        rating: movie.rating.kp.toFixed(1),
+        movieLength: `${Math.floor(movie.movieLength / 60)}:${movie.movieLength % 60}`,
+        watchability: movie.watchability.items ?? []
       }
     })
 

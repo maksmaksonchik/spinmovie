@@ -1,0 +1,37 @@
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 123;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, .5);
+}
+
+.modal {
+  position: relative;
+  background: var(--color-neutral);
+  width: 55vw;
+  max-width: calc(0.6 * 1440px);
+  padding: 32px 24px;
+  border-radius: 10px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  height: 1.6rem;
+  width: 1.6rem;
+  background: url(../../img/close.svg) center/contain no-repeat;
+  border: none;
+  transition: all 0.15s linear;
+}
+
+.closeButton:hover {
+  cursor: pointer;
+  background: url(../../img/close-hover.svg) center/contain no-repeat;
+}

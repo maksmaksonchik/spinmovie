@@ -1,54 +1,69 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import styles from './Wheel.module.css'
 import arrow from '../../img/arrow.svg'
 import { getRandomSpin } from './utils/getRandomSpin';
 import { useAppSelector } from '../../hooks/redux';
+import Modal from '../Modal/Modal';
+import MovieCard from '../MovieCard/MovieCard';
+
+type TResult = number | undefined;
+
+let currantRotation = 0;
 
 const Wheel: FC = () => {
+  const { movieList } = useAppSelector(state => state.movieListReducer);
 
-  const {movieList} = useAppSelector(state => state.movieListReducer)
+  const [modalActive, setModalActive] = useState(false);
+  const modalOnClose = () => setModalActive(false);
 
-  let currantRotation = 0;
+  const [spinResult, setSpinResult] = useState<TResult>();
 
-  // начальное положение стрелки: 18 градусов (от начала нулевого айтема)
   const INITIAL_ARROW_POSITION = 18;
 
   const spinWheel = () => {
     const disc = document.querySelector(`.${styles.disc}`) as HTMLElement;
-
     if (!disc) {
       console.error('Колесо не работает :(');
       return;
     };
 
     currantRotation = currantRotation + getRandomSpin();
-    
+    setSpinResult(10 - Math.ceil((currantRotation - INITIAL_ARROW_POSITION) % 360 / 36));
+
     disc.style.transform = `rotate(${currantRotation}deg)`;
 
-    const spinResult = 10 - Math.ceil((currantRotation - INITIAL_ARROW_POSITION) % 360 / 36);
-
-    setTimeout(() => console.log(movieList[spinResult].name), 5000);
+    setTimeout(() => setModalActive(true), 5000);
   };
 
   return (
-    <div className={styles.wheel}>
-      <button className={styles.spin} onClick={spinWheel}>Spin!</button>
-      <img className={styles.arrow} src={arrow} alt="arrow" />
-      <div className={styles.disc}>
-        {movieList.map((movie, i) => (
-          <div
-            className={styles[`item${i}`]}
-            key={i}
-          >
+    <>
+      <div className={styles.wheel}>
+        <button className={styles.spin} onClick={spinWheel}>Spin!</button>
+        <img className={styles.arrow} src={arrow} alt="arrow" />
+        <div className={styles.disc}>
+          {movieList.map((movie, i) => (
             <div
-              className={styles.poster}
-              style={{ background: `url(${movie.poster}) top/cover` }}
-            />
-          </div>
-        ))}
+              className={styles[`item${i}`]}
+              key={i}
+            >
+              <div
+                className={styles.poster}
+                style={{ background: `url(${movie.poster}) top/cover` }}
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+
+      <Modal active={modalActive} onClose={modalOnClose}>
+        <div>
+          {typeof spinResult === 'number'
+            ? <MovieCard movie={movieList[spinResult]}/>
+            : 'Что-то пошло не так'}
+        </div>
+      </Modal>
+    </>
   );
 };
 
