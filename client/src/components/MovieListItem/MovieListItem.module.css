@@ -18,6 +18,11 @@
   height: 100%;
 }
 
+.posterPlaceholder {
+  aspect-ratio: 2/3;  
+  background: var(--color-neutral-dark);
+}
+
 .info {
   flex-grow: 10;
   display: flex;

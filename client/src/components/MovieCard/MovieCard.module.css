@@ -1,5 +1,6 @@
 .movie {
-  width: 100%;
+  width: 55vw;
+  max-width: calc(0.6 * 1440px);
 
   display: flex;
   gap: 32px;

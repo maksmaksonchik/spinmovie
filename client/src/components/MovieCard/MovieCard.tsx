@@ -2,7 +2,6 @@ import { FC } from "react";
 
 import styles from './MovieCard.module.css';
 import { TMovie } from "../../models/TMovie";
-// import WatchButton from "../WatchButton/WatchButton";
 import kpLogo from '../../img/kinopoisk-logo.png'
 
 type Props = {

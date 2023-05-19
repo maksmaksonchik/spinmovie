@@ -3,18 +3,25 @@ import { FC } from 'react';
 import styles from './MovieList.module.css'
 
 import MovieListItem from '../MovieListItem/MovieListItem';
-import { useAppSelector } from '../../hooks/redux';
+import { TMovie } from '../../models/TMovie';
 
-const MovieList: FC = () => {
+type Props = {
+  movieList: TMovie[];
+  type: 'wheelList' | 'searchList'
+  replaceAction?: (movie: TMovie) => void;
+}
 
-  const {movieList} = useAppSelector(state => state.movieListReducer)
-
+const MovieList: FC<Props> = ({ movieList, type, replaceAction }) => {
   return (
     <div className={styles.movieList}>
-      {movieList.map((movie, i) => (
+      {movieList && movieList.map((movie, i) => (
         <MovieListItem
           movie={movie}
-          key={i} />
+          index={i}
+          type={type}
+          replaceAction={replaceAction}
+          key={i}
+        />
       ))}
     </div>
   );

@@ -13,11 +13,10 @@
 
 .modal {
   position: relative;
-  background: var(--color-neutral);
-  width: 55vw;
-  max-width: calc(0.6 * 1440px);
+  background: var(--color-secondary-light);
   padding: 32px 24px;
   border-radius: 10px;
+  max-height: 80vh;
 }
 
 .closeButton {
