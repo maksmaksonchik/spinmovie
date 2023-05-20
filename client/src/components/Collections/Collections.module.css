@@ -1,0 +1,42 @@
+.collections {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  gap: 16px;
+  border-radius: 4px;
+  color: var(--color-primary);
+  background: var(--color-neutral);
+  cursor: pointer;
+}
+
+.info {
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  margin: 0;
+  font-weight: 500;
+  font-size: 2.4rem;
+  color: var(--color-primary-dark)
+}
+
+.description {
+  margin-top: 8px;
+  font-weight: 400;
+  font-size: 2rem;
+  color: var(--color-primary)
+}
+
+.select {
+  background: var(--color-primary-light);
+}
