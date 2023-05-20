@@ -15,7 +15,7 @@ const Footer: FC = () => {
         </div>
         <div className={styles.links}>
           <a className={styles.linkItem}
-            href="https://github.com/maksmaksonchik"
+            href="https://t.me/maksmaksonchik"
             target='_blank'
             rel="noreferrer"
           >
