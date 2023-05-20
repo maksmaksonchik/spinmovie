@@ -18,10 +18,22 @@ class ListController {
     }
   }
 
+  async getTeamCollections(req, res) {
+    let { limit, page} = req.query;
+    page = page || 1;
+    limit = limit || 10;
+
+    const offset = page * limit - limit
+
+    const lists = await List.findAndCountAll({ where: { userId: 1 }, limit, offset });
+
+    return res.json(lists);
+  }
+
   async getAll(req, res) {
     let {userId, limit, page} = req.query;
     page = page || 1;
-    limit = limit || 9;
+    limit = limit || 10;
 
     const offset = page * limit - limit
 

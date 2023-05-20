@@ -1,8 +1,9 @@
 const Router = require('express');
 const router = new Router();
 const listController = require('../controllers/listController');
+const checkAuthMiddleware = require('../middleware/checkAuthMiddleware');
 
-router.post('/', listController.create);
-router.get('/', listController.getAll);
+router.get('/', listController.getTeamCollections);
+router.post('/', checkAuthMiddleware, listController.create);
 
 module.exports = router;
