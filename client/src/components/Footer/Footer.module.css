@@ -1,0 +1,32 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 90px;
+  margin-top: 64px;
+  border-top: 2px solid var(--color-secondary-light);
+  
+  font-size: 2.4rem;
+  color: var(--color-secondary-light);
+}
+
+.links {
+  display: flex;
+  gap: 16px;
+}
+
+.linkItem {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  height: 3.6rem;
+  transition: all 0.15s linear;
+}
+
+.icon:hover {
+  height: 3.6rem;
+  filter: brightness(1.1);
+}
