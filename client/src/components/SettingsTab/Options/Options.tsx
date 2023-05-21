@@ -3,7 +3,7 @@ import { FC } from "react";
 import styles from './Options.module.css';
 import MovieList from "../../MovieList/MovieList";
 import Button from "../../Button/Button";
-import { movieApi } from "../../../store/movieApi/movieApi";
+import { movieApi } from "../../../services/movieApi/movieApi";
 
 const Options: FC = () => {
   const { data: movieList } = movieApi.useFetchTopTenQuery('');

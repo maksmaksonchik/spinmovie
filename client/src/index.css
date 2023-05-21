@@ -16,6 +16,8 @@
   --color-shadow-primary-dark: rgba(45, 42, 77, 0.25);
   --color-shadow-neutral: rgba(245, 245, 245, 0.25);
 
+  --color-error: #BA2F2F;
+
   --wheel-inner-size: 626px;
   --pie-height: calc(var(--wheel-inner-size) / 2);
   --pie-width: calc(2 * var(--pie-height) * tan(18deg));

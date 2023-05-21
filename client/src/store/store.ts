@@ -1,18 +1,25 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
-import { movieApi } from './movieApi/movieApi';
-import { userApi } from './userApi/userApi';
+import { movieApi } from '../services/movieApi/movieApi';
+import { collectionApi } from '../services/collectionApi/collectionsApi';
+import { userApi } from '../services/userApi/userApi';
+import { userReducer } from './slices/userSlice';
+
 
 const rootReducer = combineReducers({
+  userReducer,
   [movieApi.reducerPath]: movieApi.reducer,
-  [userApi.reducerPath]: userApi.reducer
+  [collectionApi.reducerPath]: collectionApi.reducer,
+  [userApi.reducerPath]: userApi.reducer,
 })
 
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => {
-      return getDefaultMiddleware().concat(movieApi.middleware).concat(userApi.middleware)
-    }
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
+      movieApi.middleware, 
+      collectionApi.middleware,
+      userApi.middleware
+    )
   })
 } 
 

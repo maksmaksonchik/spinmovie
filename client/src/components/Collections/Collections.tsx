@@ -2,14 +2,14 @@ import { FC } from 'react';
 
 import styles from './Collections.module.css';
 import Button from '../Button/Button';
-import { userApi } from '../../store/userApi/userApi';
+import { collectionApi } from '../../services/collectionApi/collectionsApi';
 
 type Props = {
   type: 'team' | 'user',
 }
 
 const Collections: FC<Props> = ({ type }) => {
-  const {data: collections} = userApi.useFetchTeamCollectionsQuery('');
+  const {data: collections} = collectionApi.useFetchTeamCollectionsQuery('');
   // const collections = [
   //   {
   //     title: 'Топ-10 Кинопоиска',

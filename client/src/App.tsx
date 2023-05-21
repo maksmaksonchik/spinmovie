@@ -6,8 +6,10 @@ import WheelLayout from './components/WheelLayout/WheelLayout';
 import Tabs from './components/Tabs/Tabs';
 import Collections from './components/Collections/Collections';
 import Footer from './components/Footer/Footer';
+import { userApi } from './services/userApi/userApi';
 
 const App = () => {
+  userApi.useCheckQuery();
   return (
     <>
       <Header />

@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 
 import styles from './NewMovieForm.module.css'
 import MovieList from '../MovieList/MovieList';
-import { movieApi } from '../../store/movieApi/movieApi';
+import { movieApi } from '../../services/movieApi/movieApi';
 import { TMovie } from '../../models/TMovie';
 
 type Props = {

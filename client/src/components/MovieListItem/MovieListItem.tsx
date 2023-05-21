@@ -6,7 +6,7 @@ import Modal from '../Modal/Modal';
 import MovieCard from '../MovieCard/MovieCard';
 import NewMovieForm from '../NewMovieForm/NewMovieForm';
 import { useAppDispatch } from '../../hooks/redux';
-import { movieApi } from '../../store/movieApi/movieApi';
+import { movieApi } from '../../services/movieApi/movieApi';
 
 type Props = {
   movie: TMovie;

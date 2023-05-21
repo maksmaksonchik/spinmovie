@@ -6,7 +6,7 @@ import { getRandomSpin } from './utils/getRandomSpin';
 // import { useAppSelector } from '../../hooks/redux';
 import Modal from '../Modal/Modal';
 import MovieCard from '../MovieCard/MovieCard';
-import { movieApi } from '../../store/movieApi/movieApi';
+import { movieApi } from '../../services/movieApi/movieApi';
 
 type TResult = number | undefined;
 
