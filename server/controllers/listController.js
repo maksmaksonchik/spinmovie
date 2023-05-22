@@ -30,20 +30,15 @@ class ListController {
     return res.json(lists);
   }
 
-  async getAll(req, res) {
-    let {userId, limit, page} = req.query;
+  async getUserCollections(req, res) {
+    let {user, limit, page} = req.query;
     page = page || 1;
     limit = limit || 10;
 
     const offset = page * limit - limit
 
     let lists;
-    if (!userId) {
-      lists = await List.findAndCountAll({ limit, offset });
-    }
-    if (userId) {
-      lists = await List.findAndCountAll({ where: { userId }, limit, offset});
-    }
+    lists = await List.findAndCountAll({ where: { userId: req.user.id }, limit, offset});
     return res.json(lists);
   }
 }

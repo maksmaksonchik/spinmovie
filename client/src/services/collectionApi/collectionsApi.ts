@@ -8,9 +8,19 @@ export const collectionApi = createApi({
     prepareHeaders: (headers) => headers.set('Authorization', `Bearere ${localStorage.getItem('token')}`)
   }),
   endpoints: (build) => ({
-    fetchTeamCollections: build.query<TCollection[], string>({
+    fetchTeamCollections: build.query<TCollection[], void>({
       query: () => ({
-        url: '/list',
+        url: '/list/team',
+        params: {
+          page: 1,
+          limit: 10
+        }
+      }),
+      transformResponse: ((response: TCollectionsResponse): TCollection[] => response.rows),
+    }),
+    fetchUserCollectios: build.query<TCollection[], void>({
+      query: () => ({
+        url: '/list/',
         params: {
           page: 1,
           limit: 10
