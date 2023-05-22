@@ -9,7 +9,7 @@ export const movieApi = createApi({
     prepareHeaders: (headers) => headers.set('X-API-KEY', 'TYRTRAQ-YJZ41V1-M1A1C7P-BK58JAB')
   }),
   endpoints: (build) => ({
-    fetchTopTen: build.query<TMovie[], string>({
+    fetchTopTen: build.query<TMovie[], void>({
       query: () => ({
         url: '/v1.3/movie',
         params: {
@@ -31,11 +31,11 @@ export const movieApi = createApi({
       transformResponse: (response: TSearchResponse): TMovie[] => response.docs.map(transformSearchedMovie),
 
     }),
-    fetchById: build.query<TMovie, number>({
-      query: (id) => ({
-        url: `/v1.3/movie/${id}`,
-      }),
-      transformResponse: transformFetchedMovie,
-    })
+    // fetchById: build.query<TMovie, number>({
+    //   query: (id) => ({
+    //     url: `/v1.3/movie/${id}`,
+    //   }),
+    //   transformResponse: transformFetchedMovie,
+    // })
   })
 })

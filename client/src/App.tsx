@@ -6,9 +6,11 @@ import Tabs from './components/Tabs/Tabs';
 import Collections from './components/Collections/Collections';
 import Footer from './components/Footer/Footer';
 import { userApi } from './services/userApi/userApi';
+import { movieApi } from './services/movieApi/movieApi';
 
 const App = () => {
   userApi.useCheckQuery();
+  movieApi.useFetchTopTenQuery();
   return (
     <>
       <Header />

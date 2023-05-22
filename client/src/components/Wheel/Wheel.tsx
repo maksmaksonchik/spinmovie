@@ -3,18 +3,16 @@ import { FC, useState } from 'react';
 import styles from './Wheel.module.css'
 import arrow from '../../img/arrow.svg'
 import { getRandomSpin } from './utils/getRandomSpin';
-// import { useAppSelector } from '../../hooks/redux';
+import { useAppSelector } from '../../hooks/redux';
 import Modal from '../Modal/Modal';
 import MovieCard from '../MovieCard/MovieCard';
-import { movieApi } from '../../services/movieApi/movieApi';
 
 type TResult = number | undefined;
 
 let currantRotation = 0;
 
 const Wheel: FC = () => {
-  // const { movieList } = useAppSelector(state => state.movieListReducer);
-  const {data: movieList} = movieApi.useFetchTopTenQuery('');
+  const { wheelList } = useAppSelector(state => state.movieReducer);
 
   const [modalActive, setModalActive] = useState(false);
   const modalOnClose = () => setModalActive(false);
@@ -44,7 +42,7 @@ const Wheel: FC = () => {
         <button className={styles.spin} onClick={spinWheel}>Spin!</button>
         <img className={styles.arrow} src={arrow} alt="arrow" />
         <div className={styles.disc}>
-          {movieList && movieList.map((movie, i) => (
+          {wheelList && wheelList.map((movie, i) => (
             <div
               className={styles[`item${i}`]}
               key={i}
@@ -60,8 +58,8 @@ const Wheel: FC = () => {
 
       <Modal active={modalActive} onClose={modalOnClose}>
         <div>
-          {typeof spinResult === 'number' && movieList
-            ? <MovieCard movie={movieList[spinResult]}/>
+          {typeof spinResult === 'number' && wheelList
+            ? <MovieCard movie={wheelList[spinResult]}/>
             : 'Что-то пошло не так'}
         </div>
       </Modal>

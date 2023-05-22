@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { TUser } from "../../models/TUser";
 import { userApi } from "../../services/userApi/userApi";
 
@@ -16,7 +16,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    logout(state, action: PayloadAction<void>) {
+    logout(state) {
       localStorage.removeItem('token')
       state.user = null;
       state.isAuth = false;

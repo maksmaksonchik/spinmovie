@@ -6,7 +6,7 @@ import Modal from '../Modal/Modal';
 import MovieCard from '../MovieCard/MovieCard';
 import NewMovieForm from '../NewMovieForm/NewMovieForm';
 import { useAppDispatch } from '../../hooks/redux';
-import { movieApi } from '../../services/movieApi/movieApi';
+import { movieSlice } from '../../store/movieSlice/movieSlice';
 
 type Props = {
   movie: TMovie;
@@ -39,9 +39,7 @@ const MovieListItem: FC<Props> = ({
   }
 
   const onReplace = (movie: TMovie) => {
-    dispatch(movieApi.util.updateQueryData('fetchTopTen', '', (draft) => {
-      draft[index] = movie;
-    }))
+    dispatch(movieSlice.actions.replace({ index, movie }))
     replaceModalOnClose();
   }
 

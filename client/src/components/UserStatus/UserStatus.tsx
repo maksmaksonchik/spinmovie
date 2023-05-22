@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 import Login from '../LoginForm/LoginForm';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { userSlice } from '../../store/slices/userSlice';
+import { userSlice } from '../../store/userSlice/userSlice';
 
 const UserStatus: FC = () => {
   const { isAuth, user } = useAppSelector(state => state.userReducer)

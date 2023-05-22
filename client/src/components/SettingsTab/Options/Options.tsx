@@ -3,15 +3,15 @@ import { FC } from "react";
 import styles from './Options.module.css';
 import MovieList from "../../MovieList/MovieList";
 import Button from "../../Button/Button";
-import { movieApi } from "../../../services/movieApi/movieApi";
+import { useAppSelector } from "../../../hooks/redux";
 
 const Options: FC = () => {
-  const { data: movieList } = movieApi.useFetchTopTenQuery('');
+  const { wheelList } = useAppSelector(state => state.movieReducer);
 
   return (
     <div className={styles.options}>
-      {movieList
-        ? <MovieList movieList={movieList} type='wheelList'/>
+      {wheelList
+        ? <MovieList movieList={wheelList} type='wheelList'/>
         : 'Загрузка...'
       }
 
