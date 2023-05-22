@@ -6,7 +6,7 @@ export const movieApi = createApi({
   reducerPath: 'movieApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.kinopoisk.dev',
-    prepareHeaders: (headers) => headers.set('X-API-KEY', 'TYRTRAQ-YJZ41V1-M1A1C7P-BK58JAB')
+    prepareHeaders: (headers) => headers.set('X-API-KEY', process.env.REACT_APP_KINOPOISK_API_KEY ?? '')
   }),
   endpoints: (build) => ({
     fetchTopTen: build.query<TMovie[], void>({
