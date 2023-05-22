@@ -3,12 +3,12 @@ type nameObj = {
 }
 
 export type TWatchItem = {
-      name: string;
-      logo: {
-        url: string;
-      };
-      url: string;
-    }
+  name: string;
+  logo: {
+    url: string;
+  };
+  url: string;
+}
 
 export type TFetchedMovie = {
   id: number;

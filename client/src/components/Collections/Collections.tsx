@@ -3,27 +3,34 @@ import { FC } from 'react';
 import styles from './Collections.module.css';
 import Button from '../Button/Button';
 import { collectionApi } from '../../services/collectionApi/collectionsApi';
+// import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+// import { fetchCollectionMovies } from '../../store/slices/ActionCreators';
+// import type {TCollection} from '../../models/TCollection'
+// import { movieApi } from '../../services/movieApi/movieApi';
 
 type Props = {
   type: 'team' | 'user',
 }
 
 const Collections: FC<Props> = ({ type }) => {
-  const {data: collections} = collectionApi.useFetchTeamCollectionsQuery('');
-  // const collections = [
-  //   {
-  //     title: 'Топ-10 Кинопоиска',
-  //     description: 'Самая крутая подборка самых культовых фильмов. Если вы хотите поглубже окунуться в прекрасный кинематограф, советую выбрать эту подборку!'
-  //   },
-  //   {
-  //     title: 'Топ-10 самых худших фильмов',
-  //     // description: 'Хотите испытать плотного кринжа? Тогда тыкайте сюда - подборка самых худших фильмов за все время!'
-  //   },
-  //   {
-  //     title: 'Самые смешные комедии',
-  //     description: 'Вам грустно и одиноко? Самое время посмотреть какую-нибудь комедию, которая обязательно поднимет вам настроение!'
-  //   }
-  // ];
+  const { data: collections } = collectionApi.useFetchTeamCollectionsQuery('');
+
+  // const [focusItems, setFocusItems] = useState([] as number[])
+
+  // const dispatch = useAppDispatch(); 
+  // const { moviList } = useAppSelector(state => state.collectionReducer)
+
+  // const chooseCollection = (collection: TCollection) => {
+  //   console.log('add')
+  //   dispatch(movieApi.util.updateQueryData('fetchTopTen', '', (draft) => {
+  //     dispatch(fetchCollectionMovies(collection.items))
+  //     moviList.forEach((movie, i) => {
+  //       draft[i] = movie
+  //     })
+  //     // draft = moviList;
+  //     console.log(moviList);
+  //   }))
+  // }
 
   return (
     <div className={styles.collections}>
@@ -36,8 +43,9 @@ const Collections: FC<Props> = ({ type }) => {
           <div className={styles.buttons}>
             <Button
               className={styles.select}
-              onClick={() => alert('дада')}>
-                Выбрать
+              // onClick={() => chooseCollection(collection)}
+            >
+              Выбрать
             </Button>
           </div>
         </div>

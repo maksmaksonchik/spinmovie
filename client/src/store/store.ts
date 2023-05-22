@@ -3,10 +3,12 @@ import { movieApi } from '../services/movieApi/movieApi';
 import { collectionApi } from '../services/collectionApi/collectionsApi';
 import { userApi } from '../services/userApi/userApi';
 import { userReducer } from './slices/userSlice';
+import { collectionReducer } from './slices/collectionSlice';
 
 
 const rootReducer = combineReducers({
   userReducer,
+  collectionReducer,
   [movieApi.reducerPath]: movieApi.reducer,
   [collectionApi.reducerPath]: collectionApi.reducer,
   [userApi.reducerPath]: userApi.reducer,
