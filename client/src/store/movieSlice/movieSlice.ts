@@ -16,7 +16,11 @@ export const movieSlice = createSlice({
   reducers: {
     replace(state, action: PayloadAction<{index: number, movie: TMovie}>) {
       state.wheelList[action.payload.index] = action.payload.movie;
-    }
+    },
+    replacingByIdsSuccess: (state, action: PayloadAction<TMovie[]>) => {
+      state.wheelList = action.payload;
+    },
+
   },
   extraReducers: (builder) => {
     builder

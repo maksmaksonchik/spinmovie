@@ -31,11 +31,11 @@ export const movieApi = createApi({
       transformResponse: (response: TSearchResponse): TMovie[] => response.docs.map(transformSearchedMovie),
 
     }),
-    // fetchById: build.query<TMovie, number>({
-    //   query: (id) => ({
-    //     url: `/v1.3/movie/${id}`,
-    //   }),
-    //   transformResponse: transformFetchedMovie,
-    // })
+    fetchById: build.query<TMovie, number>({
+      query: (id) => ({
+        url: `/v1.3/movie/${id}`,
+      }),
+      transformResponse: transformFetchedMovie,
+    })
   })
 })
