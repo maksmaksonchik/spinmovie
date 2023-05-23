@@ -7,9 +7,10 @@ import { filtersWithRange, filtersWithTags } from "./FilterOptions";
 import FiltersItemWithRange from "../FiltersItemWithRange/FiltersItemWithRange";
 import { TFilterRange, TFilters } from "../../models/TFilters";
 import { movieApi } from "../../services/movieApi/movieApi";
+import Loader from "../Loader/Loader";
 
 const Filters: FC = () => {
-  const [search, { data: result, isError, isSuccess }] = movieApi.useLazySearchByFiltersQuery();
+  const [search, { data: result, isError, isSuccess, isFetching }] = movieApi.useLazySearchByFiltersQuery();
   const [filters, setFilters] = useState({} as TFilters);
   const [error, setError] = useState('');
 
@@ -71,8 +72,8 @@ const Filters: FC = () => {
       </div>
 
       <div className={styles.footer}>
-        <div className={styles.error}>
-          {error}
+        <div className={styles.status}>
+          {isFetching ? <Loader /> : error}
         </div>
 
         <Button
