@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import { TApiResponse, TMovie, TSearchResponse } from '../../models/TMovie'
 import { transformFetchedMovie, transformSearchedMovie } from './utils/transformMovie'
+import { TFilters } from '../../models/TFilters'
+import { getFilterQueryParams } from './utils/getFilterQueryParams'
 
 export const movieApi = createApi({
   reducerPath: 'movieApi',
@@ -19,6 +21,18 @@ export const movieApi = createApi({
       }),
       transformResponse: (response: TApiResponse): TMovie[] => response.docs.map(transformFetchedMovie),
     }),
+
+    searchByFilters: build.query<TMovie[], TFilters>({
+      query: (filters) => ({
+        url: `/v1.3/movie?${getFilterQueryParams(filters)}`,
+        params: {
+          page: 1,
+          limit: 10,
+        }
+      }),
+      transformResponse: (response: TApiResponse): TMovie[] => response.docs.map(transformFetchedMovie),
+    }),
+
     searchByName: build.query<TMovie[], string>({
       query: (serchTerm) => ({
         url: '/v1.2/movie/search',
@@ -29,13 +43,13 @@ export const movieApi = createApi({
         }
       }),
       transformResponse: (response: TSearchResponse): TMovie[] => response.docs.map(transformSearchedMovie),
-
     }),
+
     fetchById: build.query<TMovie, number>({
       query: (id) => ({
         url: `/v1.3/movie/${id}`,
       }),
       transformResponse: transformFetchedMovie,
-    })
+    }),
   })
 })

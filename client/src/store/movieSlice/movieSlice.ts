@@ -27,6 +27,11 @@ export const movieSlice = createSlice({
     .addMatcher(movieApi.endpoints.fetchTopTen.matchFulfilled, (state, action) => {
       state.wheelList = action.payload;
     })
+    .addMatcher(movieApi.endpoints.searchByFilters.matchFulfilled, (state, action) => {
+      if (action.payload.length === 10) {
+        state.wheelList = action.payload;
+      }
+    })
   },
 })
 
