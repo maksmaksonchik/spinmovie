@@ -12,19 +12,20 @@ import Loader from "../Loader/Loader";
 const Filters: FC = () => {
   const [search, { data: result, isError, isSuccess, isFetching }] = movieApi.useLazySearchByFiltersQuery();
   const [filters, setFilters] = useState({} as TFilters);
-  const [error, setError] = useState('');
+  const [fetchingError, setFetchingError] = useState('');
 
   useEffect(() => {
     if (result !== undefined && (result.length < 10)) {
-      return setError('Слишком мало фильмов :(')
+      return setFetchingError('Слишком мало фильмов :(')
     }
     if (!result && (isError || isSuccess)) {
-      return setError('Что-то пошло не так :(')
+      return setFetchingError('Что-то пошло не так :(')
     }
   }, [isError, isSuccess, result])
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    setFetchingError('');
     search(filters);
   }
 
@@ -73,7 +74,7 @@ const Filters: FC = () => {
 
       <div className={styles.footer}>
         <div className={styles.status}>
-          {isFetching ? <Loader /> : error}
+          {isFetching ? <Loader /> : fetchingError}
         </div>
 
         <Button

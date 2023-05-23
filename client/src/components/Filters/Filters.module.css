@@ -23,7 +23,7 @@
   background: var(--color-primary-light);
 }
 
-.error {
+.status {
   text-align: center;
   font-weight: 300;
   font-size: 2.0rem;

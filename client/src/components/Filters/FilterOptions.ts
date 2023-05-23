@@ -27,7 +27,7 @@ export const filtersWithRange = [
     mask: '9999'
   },
   {
-    id: 'reting',
+    id: 'rating',
     name: 'Рейтинг Кинопоиска',
     placeholders: {
       from: '6.5',

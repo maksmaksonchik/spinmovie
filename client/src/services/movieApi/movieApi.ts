@@ -3,6 +3,7 @@ import { TApiResponse, TMovie, TSearchResponse } from '../../models/TMovie'
 import { transformFetchedMovie, transformSearchedMovie } from './utils/transformMovie'
 import { TFilters } from '../../models/TFilters'
 import { getFilterQueryParams } from './utils/getFilterQueryParams'
+import { getRandomList } from './utils/getRandomList'
 
 export const movieApi = createApi({
   reducerPath: 'movieApi',
@@ -27,10 +28,12 @@ export const movieApi = createApi({
         url: `/v1.3/movie?${getFilterQueryParams(filters)}`,
         params: {
           page: 1,
-          limit: 10,
+          limit: 100,
         }
       }),
-      transformResponse: (response: TApiResponse): TMovie[] => response.docs.map(transformFetchedMovie),
+      transformResponse: (response: TApiResponse): TMovie[] => {
+        return getRandomList(response.docs).map(transformFetchedMovie);
+      },
     }),
 
     searchByName: build.query<TMovie[], string>({
