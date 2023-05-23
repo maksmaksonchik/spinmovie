@@ -4,12 +4,12 @@ const {List} = require('../models/models');
 class ListController {
   async create(req, res, next) {
     try {
-      const {title, description, items, userId} = req.body;
+      const {title, description, items } = req.body;
       const list = await List.create({
         title,
         description,
-        items, 
-        userId
+        items,
+        userId: req.user.id 
       });
 
       return res.json(list)
@@ -31,7 +31,7 @@ class ListController {
   }
 
   async getUserCollections(req, res) {
-    let {user, limit, page} = req.query;
+    let { limit, page} = req.query;
     page = page || 1;
     limit = limit || 10;
 

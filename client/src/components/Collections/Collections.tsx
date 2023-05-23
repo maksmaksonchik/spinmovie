@@ -14,7 +14,7 @@ const Collections: FC<Props> = ({ type }) => {
   const dispatch = useAppDispatch();
 
   const { data: teamCollections } = collectionApi.useFetchTeamCollectionsQuery();
-  const { data: userCollections } = collectionApi.useFetchUserCollectiosQuery(undefined);
+  const { data: userCollections } = collectionApi.useFetchUserCollectiosQuery();
 
   const collections = (type === 'user') ? userCollections : teamCollections;
 

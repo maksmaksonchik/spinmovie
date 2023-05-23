@@ -19,11 +19,11 @@ export const collectionApi = createApi({
       transformResponse: ((response: TCollectionsResponse): TCollection[] => response.rows),
     }),
     fetchUserCollectios: build.query<TCollection[], void>({
-      query: () => ({
+      query: (id) => ({
         url: '/',
         params: {
           page: 1,
-          limit: 10
+          limit: 10,
         }
       }),
       transformResponse: ((response: TCollectionsResponse): TCollection[] => response.rows),
