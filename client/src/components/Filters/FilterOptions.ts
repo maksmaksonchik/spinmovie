@@ -24,7 +24,7 @@ export const filtersWithRange = [
       from: '2013',
       to: '2023'
     },
-    mask: '1111'
+    mask: '9999'
   },
   {
     id: 'reting',
@@ -33,7 +33,7 @@ export const filtersWithRange = [
       from: '6.5',
       to: '7.1'
     },
-    mask: '1.1'
+    mask: '9.9'
   },
   {
     id: 'length',
@@ -42,6 +42,6 @@ export const filtersWithRange = [
       from: '1:30',
       to: '2:00'
     },
-    mask: '1:11'
+    mask: '9:99'
   }
 ]

@@ -25,7 +25,6 @@ const Filters: FC = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(filters);
   }
 
   const createHandleTagsChange = (id: string) => (values: string[]) => {

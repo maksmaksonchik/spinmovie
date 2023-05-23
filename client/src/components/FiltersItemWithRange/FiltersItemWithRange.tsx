@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 import styles from './FiltersItemWithRange.module.css';
+import InputMask from 'react-input-mask';
 
 type Props = {
   id: string,
@@ -38,7 +39,8 @@ const FiltersItemWithRange: FC<Props> = ({ id, name, changeHandler, placeholders
     <div className={styles.container}>
       <label htmlFor={`${id}From`} className={styles.name}>{name}</label>
       <div className={styles.inputContainer}>
-        <input
+        <InputMask
+          mask={mask}
           className={styles.input}
           id={`${id}From`}
           type="text"
@@ -48,7 +50,8 @@ const FiltersItemWithRange: FC<Props> = ({ id, name, changeHandler, placeholders
           onBlur={handleFromInputBlur}
         />
         <label htmlFor={`${id}To`} className={styles.line}>-</label>
-        <input
+        <InputMask
+          mask={mask}
           className={styles.input}
           id={`${id}To`}
           type="text"
