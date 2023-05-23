@@ -7,8 +7,10 @@ import { useAppSelector } from "../../hooks/redux";
 import Modal from "../Modal/Modal";
 import CreateCollectionForm from "../CreateCollectionForm/CreateCollectionForm";
 import Loader from "../Loader/Loader";
+import LoginForm from "../LoginForm/LoginForm";
 
 const Options: FC = () => {
+  const { isAuth } = useAppSelector(state => state.userReducer)
   const [modalActive, setModalActive] = useState(false);
   const modalOnClose = () => setModalActive(false);
   const { wheelList } = useAppSelector(state => state.movieReducer);
@@ -30,9 +32,14 @@ const Options: FC = () => {
 
       <Modal
         active={modalActive}
-        onClose={(modalOnClose) }
+        onClose={(modalOnClose)}
       >
-        <CreateCollectionForm movieList={wheelList} onClose={modalOnClose} />
+        {
+          isAuth
+            ? <CreateCollectionForm movieList={wheelList} onClose={modalOnClose} />
+            : <LoginForm />
+        }
+        
       </Modal>
     </>
 
