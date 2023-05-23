@@ -11,6 +11,7 @@ const Collections: FC<Props> = ({ type }) => {
   const { teamCollections } = useAppSelector(state => state.collectionsReducer);
   const { userCollections } = useAppSelector(state => state.collectionsReducer);
   const { isAuth } = useAppSelector(state => state.userReducer);
+  
 
   const collections = (type === 'user') ? userCollections : teamCollections;
   const placeholderText = isAuth ? 'Самое время создать свою первую подборку!' : 'Войдите в свой профиль, чтобы создавать свои подборки.'

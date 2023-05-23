@@ -12,6 +12,5 @@ export const replaceWheelLisByIds = (ids: number[]) => async (dispatch: AppDispa
       }
     })
   } catch (e) {
-    console.log(e);
   }
 }

@@ -25,6 +25,9 @@ export const collectionsSlice = createSlice({
     .addMatcher(collectionApi.endpoints.fetchUserCollectios.matchFulfilled, (state, action) => {
       state.userCollections = action.payload;
     })
+    .addMatcher(collectionApi.endpoints.fetchUserCollectios.matchRejected, (state, action) => {
+      state.userCollections = [];
+    })
     .addMatcher(collectionApi.endpoints.create.matchFulfilled, (state, action) => {
       state.userCollections.push(action.payload);
     })

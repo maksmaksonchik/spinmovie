@@ -25,8 +25,6 @@ const Login: FC = () => {
     if (error) {
       return setErrorMessage('Неизвестная ошибка')
     }
-
-    console.log(error)
   }, [error])
 
 

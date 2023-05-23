@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './components/Header/Header';
 import Wrapper from './components/Wrapper/Wrapper';
 import WheelLayout from './components/WheelLayout/WheelLayout';
@@ -8,12 +8,20 @@ import Footer from './components/Footer/Footer';
 import { userApi } from './services/userApi/userApi';
 import { movieApi } from './services/movieApi/movieApi';
 import { collectionApi } from './services/collectionApi/collectionsApi';
+import { useAppSelector } from './hooks/redux';
 
 const App = () => {
   userApi.useCheckQuery();
   movieApi.useFetchTopTenQuery();
   collectionApi.useFetchTeamCollectionsQuery();
-  collectionApi.useFetchUserCollectiosQuery();
+  const {refetch} = collectionApi.useFetchUserCollectiosQuery();
+
+  const {user} = useAppSelector(state => state.userReducer)
+
+  useEffect(() => {
+    refetch()
+  }, [user, refetch])
+
   return (
     <>
       <Header />
