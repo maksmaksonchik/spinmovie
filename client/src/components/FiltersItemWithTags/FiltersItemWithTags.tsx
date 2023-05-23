@@ -16,6 +16,9 @@ const FiltersItemWithTags: FC<Props> = ({ id, name, changeHandler, placeholder }
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value);
 
   const handleTagAdding = () => {
+    if (input.length === 0) {
+      return;
+    }
     const newValues = values.includes(input) ? values : [...values, input];
     changeHandler(newValues);
     setValues(newValues);
@@ -48,6 +51,7 @@ const FiltersItemWithTags: FC<Props> = ({ id, name, changeHandler, placeholder }
           spellCheck="false"
           placeholder={placeholder}
           onKeyDown={handleInputEnter}
+          onBlur={handleTagAdding}
         />
         <button
           className={styles.addButton}
