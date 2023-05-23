@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 8px;
+  color: var(--color-primary-dark);
+  font-size: 1.6rem;
+}
+
+.name {
+  display: block;
+  font-size: 3rem;
+  width: 30.8rem;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 160px;
+}
+
+.input {
+  width: 6rem;
+  background: var(--color-neutral);
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 1.6rem;
+  color: var(--color-primary-dark);
+  text-align: center;
+  height: 2.8rem;
+}
+
+.input::placeholder {
+  color: var(--color-neutral-dark);
+}

@@ -1,0 +1,81 @@
+.container {
+  position: relative;
+  color: var(--color-primary-dark);
+  font-size: 1.6rem;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.name {
+  display: block;
+  font-size: 3rem;
+  width: 30.8rem;
+}
+
+.input {
+  width: 160px;
+  background: var(--color-neutral);
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  padding: 4px 36px 4px 10px;
+  font-size: 1.6rem;
+  color: var(--color-primary-dark);
+}
+
+.input::placeholder {
+  color: var(--color-neutral-dark);
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  right: 26px;
+  outline: none;
+  transition: all 0.15s linear;
+}
+
+.addIcon {
+  height: 1.6rem;
+}
+
+.deleteButton {
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 4px;
+  outline: none;
+}
+
+.deleteIcon {
+  transform: rotate(45deg);
+  height: 1.6rem;
+  transition: all 0.15s linear;
+}
+
+.addButton:hover, .deleteIcon:hover {
+  cursor: pointer;
+  filter: brightness(1.1);
+}
+
+.tagsContainer {
+  display: flex;
+  gap: 4px;
+}
+
+.tag {
+  display: flex;
+  padding: 4px 8px;
+  background: var(--color-neutral);
+  border-radius: 4px;
+}

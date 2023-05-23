@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 
 import styles from './SettingsTab.module.css'
-import Options from "./Options/Options";
-import Filters from "./Filters/Filters";
+import Options from "../Options/Options";
+import Filters from "../Filters/Filters";
 
 const WheelSettings: FC = () => {
   const [active, setActive] = useState('options');

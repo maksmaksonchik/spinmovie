@@ -1,9 +1,9 @@
 import { FC } from "react";
 
 import styles from './Options.module.css';
-import MovieList from "../../MovieList/MovieList";
-import Button from "../../Button/Button";
-import { useAppSelector } from "../../../hooks/redux";
+import MovieList from "../MovieList/MovieList";
+import Button from "../Button/Button";
+import { useAppSelector } from "../../hooks/redux";
 
 const Options: FC = () => {
   const { wheelList } = useAppSelector(state => state.movieReducer);
@@ -11,13 +11,15 @@ const Options: FC = () => {
   return (
     <div className={styles.options}>
       {wheelList
-        ? <MovieList movieList={wheelList} type='wheelList'/>
+        ? <MovieList movieList={wheelList} type='wheelList' />
         : 'Загрузка...'
       }
 
       <Button
         className={styles.submit}
-        onClick={() => alert('Сохранить подборку')}>Сохранить подборку</Button>
+        onClick={() => alert('Сохранить подборку')}>
+        Сохранить подборку
+      </Button>
     </div>
   );
 }
