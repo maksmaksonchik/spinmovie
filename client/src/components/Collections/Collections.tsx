@@ -1,10 +1,10 @@
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 
 import styles from './Collections.module.css';
 import Button from '../Button/Button';
 import { collectionApi } from '../../services/collectionApi/collectionsApi';
 import { replaceWheelLisByIds } from '../../store/movieSlice/actionCreators';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { useAppDispatch } from '../../hooks/redux';
 
 type Props = {
   type: 'team' | 'user',
@@ -12,15 +12,9 @@ type Props = {
 
 const Collections: FC<Props> = ({ type }) => {
   const dispatch = useAppDispatch();
-  // const [skip, setSkip] = useState(true);
-  const { isAuth, user } = useAppSelector(state => state.userReducer);
+
   const { data: teamCollections } = collectionApi.useFetchTeamCollectionsQuery();
   const { data: userCollections } = collectionApi.useFetchUserCollectiosQuery(undefined);
-
-  
-  // useEffect(if (isAuth) {
-  //   setSkip(false);
-  // }
 
   const collections = (type === 'user') ? userCollections : teamCollections;
 
