@@ -7,10 +7,13 @@ import Collections from './components/Collections/Collections';
 import Footer from './components/Footer/Footer';
 import { userApi } from './services/userApi/userApi';
 import { movieApi } from './services/movieApi/movieApi';
+import { collectionApi } from './services/collectionApi/collectionsApi';
 
 const App = () => {
   userApi.useCheckQuery();
   movieApi.useFetchTopTenQuery();
+  collectionApi.useFetchTeamCollectionsQuery();
+  collectionApi.useFetchUserCollectiosQuery();
   return (
     <>
       <Header />

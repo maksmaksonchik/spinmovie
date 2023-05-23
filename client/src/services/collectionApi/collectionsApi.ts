@@ -28,13 +28,12 @@ export const collectionApi = createApi({
       }),
       transformResponse: ((response: TCollectionsResponse): TCollection[] => response.rows),
     }),
-    create: build.mutation<TCollection[], {title: string, description: string, items: number[]}>({
+    create: build.mutation<TCollection, {title: string, description: string, items: number[]}>({
       query: (collectionData) => ({
         url: '/',
         method: 'POST',
         body: collectionData,
       }),
-      // transformResponse: ((response: TCollectionsResponse): TCollection => response.rows),
     }),
   })
 })

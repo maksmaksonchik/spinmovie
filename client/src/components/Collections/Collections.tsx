@@ -2,9 +2,8 @@ import { FC } from 'react';
 
 import styles from './Collections.module.css';
 import Button from '../Button/Button';
-import { collectionApi } from '../../services/collectionApi/collectionsApi';
 import { replaceWheelLisByIds } from '../../store/movieSlice/actionCreators';
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 
 type Props = {
   type: 'team' | 'user',
@@ -13,8 +12,8 @@ type Props = {
 const Collections: FC<Props> = ({ type }) => {
   const dispatch = useAppDispatch();
 
-  const { data: teamCollections } = collectionApi.useFetchTeamCollectionsQuery();
-  const { data: userCollections } = collectionApi.useFetchUserCollectiosQuery();
+  const { teamCollections } = useAppSelector(state => state.collectionsReducer);
+  const { userCollections } = useAppSelector(state => state.collectionsReducer);;
 
   const collections = (type === 'user') ? userCollections : teamCollections;
 
