@@ -18,6 +18,21 @@ class ListController {
     }
   }
 
+  async delete(req, res, next) {
+    try {
+      const { id } = req.body;
+      await List.destroy({
+        where: {
+          id: id,
+          userId: req.user.id
+        },
+      });
+      return res.json({id: id})
+    } catch (e) {
+      next(ApiError.badRequest(e.message));
+    }
+  }
+
   async getTeamCollections(req, res) {
     let { limit, page} = req.query;
     page = page || 1;

@@ -16,11 +16,6 @@ export const collectionsSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    // logout(state) {
-    //   localStorage.removeItem('token')
-    //   state.user = null;
-    //   state.isAuth = false;
-    // },
   },
   extraReducers: (builder) => {
     builder
@@ -31,7 +26,10 @@ export const collectionsSlice = createSlice({
       state.userCollections = action.payload;
     })
     .addMatcher(collectionApi.endpoints.create.matchFulfilled, (state, action) => {
-      state.userCollections.unshift(action.payload);
+      state.userCollections.push(action.payload);
+    })
+    .addMatcher(collectionApi.endpoints.delete.matchFulfilled, (state, action) => {
+      state.userCollections = state.userCollections.filter((collection) => collection.id !== action.payload.id);
     })
   },
 })

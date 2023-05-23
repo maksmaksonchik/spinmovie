@@ -35,5 +35,12 @@ export const collectionApi = createApi({
         body: collectionData,
       }),
     }),
+    delete: build.mutation<{id: number}, number>({
+      query: (id) => ({
+        url: '/',
+        method: 'DELETE',
+        body: { id: id },
+      }),
+    }),
   })
 })

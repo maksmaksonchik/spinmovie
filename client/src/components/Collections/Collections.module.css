@@ -13,7 +13,6 @@
   border-radius: 4px;
   color: var(--color-primary);
   background: var(--color-neutral);
-  cursor: pointer;
 }
 
 .info {
@@ -39,4 +38,28 @@
 
 .select {
   background: var(--color-primary-light);
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.delete {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  outline: none;
+  transition: all 0.15s linear;
+}
+
+.deleteIcon {
+  height: 2.4rem;
+}
+
+.delete:hover {
+  cursor: pointer;
+  filter: brightness(1.5);
 }
